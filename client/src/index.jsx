@@ -20,8 +20,8 @@ class App extends React.Component {
       url: '/repos',
       type: 'POST',
       data: {username: term},
-      success: function(data) {
-        console.log('Successful ajax post:', data);
+      success: function() {
+        console.log('Successful ajax post');
       },
       error: function() {
         console.log('Error ajax post')

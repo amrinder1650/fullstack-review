@@ -17,19 +17,25 @@ let getReposByUsername = (username, callback) => {
 
   axios.get(options.url, {headers: options.headers})
   .then(result => {
-    var repos = [];
-    for (var i = 0; i < result.data.length; i++) {
-      var repo = {
-        author: result.data[i].owner.login,
-        title: result.data[i].name,
-        url: result.data[i].html_url,
-        forks: result.data[i].forks
-      }
-      // console.log(repo);
-      repos.push(repos);
-    }
-
-    callback(null, repos)
+    callback(result);
+  //   var repos = [];
+  //   for (var i = 0; i < result.data.length; i++) {
+  //     var repo = {
+  //       author: result.data[i].owner.login,
+  //       title: result.data[i].name,
+  //       url: result.data[i].html_url,
+  //       forks: result.data[i].forks
+  //     }
+  //     // console.log(repo);
+  //     repos.push(repos);
+  //   }
+  //   return repos;
+  // })
+  // .then(result => {
+  //   console.log(result);
+  })
+  .catch(err => {
+    console.log(err);
   });
 }
 
