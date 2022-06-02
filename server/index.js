@@ -3,6 +3,7 @@ let app = express();
 const getReposByUsername = require('../helpers/github.js').getReposByUsername
 // var bodyParser = require('body-parser');
 const save = require('../database/index.js').save
+const load = require('../database/index.js').load
 
 app.use(express.static(__dirname + '/../client/dist'));
 // app.use(express.json());
@@ -34,7 +35,7 @@ app.post('/repos', function (req, res) {
         console.log(error)
       } else {
         console.log(result);
-        res.send(result);
+        res.sendStatus(200);
       }
     })
   });
@@ -43,6 +44,17 @@ app.post('/repos', function (req, res) {
 app.get('/repos', function (req, res) {
   // TODO - your code here!
   // This route should send back the top 25 repos
+
+  load((result, error) => {
+    if (error) {
+      console.log(error)
+    } else {
+      console.log(result);
+      res.send(result);
+    }
+  })
+
+  // res.send(result); do this at the end
 });
 
 let port = 1128;

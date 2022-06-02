@@ -20,12 +20,12 @@ class App extends React.Component {
       url: '/repos',
       type: 'POST',
       data: {username: term},
-      success: (result) => {
+      success: (/*result*/) => {
         console.log('Successful ajax post');
-        console.log(result);
-        this.setState({
-          repos: [...this.state.repos, ...result]
-        });
+        // console.log(result);
+        // this.setState({
+        //   repos: [...this.state.repos, ...result]
+        // });
       },
       error: function() {
         console.log('Error ajax post')
@@ -33,7 +33,22 @@ class App extends React.Component {
     });
   }
 
-  componentDidMount()
+  componentDidMount(){
+    $.ajax({
+      url: '/repos',
+      type: 'GET',
+      success: (result) => {
+        console.log('Successful ajax get');
+        console.log(result);
+        this.setState({
+          repos: [...result]
+        });
+      },
+      error: function() {
+        console.log('Error ajax get')
+      }
+    });
+  }
 
   render () {
     return (<div>

@@ -38,4 +38,15 @@ let save = (repos, callback) => {
   });
 }
 
+let load = (callback) => {
+  Repo.find({}, (error, result) => {
+    if (result) {
+      callback(result);
+    } else {
+      callback(error);
+    }
+  });
+}
+
 module.exports.save = save;
+module.exports.load = load;
