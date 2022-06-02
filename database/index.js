@@ -27,7 +27,7 @@ let save = (repos, callback) => {
   //     callback(error);
   //   }
   // });
-  console.log(repos);
+  // console.log(repos);
 
   Repo.insertMany(repos, (error, result) => {
     if (result) {
