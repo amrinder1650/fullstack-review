@@ -26,6 +26,20 @@ class App extends React.Component {
         // this.setState({
         //   repos: [...this.state.repos, ...result]
         // });
+        $.ajax({
+          url: '/repos',
+          type: 'GET',
+          success: (result) => {
+            console.log('Successful ajax get');
+            console.log(result);
+            this.setState({
+              repos: [...result]
+            });
+          },
+          error: function() {
+            console.log('Error ajax get')
+          }
+        });
       },
       error: function() {
         console.log('Error ajax post')
