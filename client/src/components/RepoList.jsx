@@ -15,12 +15,19 @@ const RepoList = (props) => {
 
       <h4>Top 25 Repos</h4>
 
-      {repos.map(repo =>
-      <div key={repo.url}>{repo.title}, {repo.author}, {repo.forks}, {repo.url}</div>
-      )}
+      <table>
+        <tr><th>Title</th><th>Author</th><th>Forks</th><th>URL</th></tr>
+        {repos.map(repo =>
+        <tr key={repo.url}><td><a href={repo.url}>{repo.title}</a></td><td>{repo.author}</td><td>{repo.forks}</td><td>{repo.url}</td></tr>
+        )}
+      </table>
 
     </div>
   )
 }
 
 export default RepoList;
+
+/* {repos.map(repo =>
+      <div key={repo.url}>{repo.title}, {repo.author}, {repo.forks}, {repo.url}</div>
+      )} */
