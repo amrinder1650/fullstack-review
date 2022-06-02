@@ -20,14 +20,20 @@ class App extends React.Component {
       url: '/repos',
       type: 'POST',
       data: {username: term},
-      success: function() {
+      success: (result) => {
         console.log('Successful ajax post');
+        console.log(result);
+        this.setState({
+          repos: [...this.state.repos, ...result]
+        });
       },
       error: function() {
         console.log('Error ajax post')
       }
     });
   }
+
+  componentDidMount()
 
   render () {
     return (<div>

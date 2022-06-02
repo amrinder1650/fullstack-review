@@ -33,7 +33,8 @@ app.post('/repos', function (req, res) {
       if (error) {
         console.log(error)
       } else {
-        res.sendStatus(200);
+        console.log(result);
+        res.send(result);
       }
     })
   });
